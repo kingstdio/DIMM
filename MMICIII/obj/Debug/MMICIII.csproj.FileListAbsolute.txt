@@ -1,0 +1,74 @@
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-2.csv
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-3.csv
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\data\exp_subject.csv
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-1.csv
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\MMICIII.exe.config
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\MMICIII.exe
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\MMICIII.pdb
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\Npgsql.dll
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\Mono.Security.dll
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar2.xml
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.F_FeatureTools.resources
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.F_main.resources
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.Properties.Resources.resources
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.GenerateResource.Cache
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.CoreCompileInputs.cache
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.exe
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.pdb
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csprojResolveAssemblyReference.cache
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.CopyComplete
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar2.dll
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\data\sofadic.csv
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\data\exp_sofa_input_item.csv
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\data\TestFiles.txt
+D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar.Charts.dll
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\data\TestFiles.txt
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-2.csv
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-3.csv
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\data\exp_sofa_input_item.csv
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\data\exp_subject.csv
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\data\sofadic.csv
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-1.csv
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\MMICIII.exe.config
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\MMICIII.exe
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\MMICIII.pdb
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\Npgsql.dll
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\Mono.Security.dll
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar2.xml
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.F_FeatureTools.resources
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.F_main.resources
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.Properties.Resources.resources
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.GenerateResource.Cache
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.CoreCompileInputs.cache
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.exe
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.pdb
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csprojAssemblyReference.cache
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.CopyComplete
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar.Charts.dll
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar2.dll
+E:\C#Workspace\WINFORM\MMICIII\MMICIII\obj\Debug\MMICIII.F_missing.resources
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.csprojAssemblyReference.cache
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.F_FeatureTools.resources
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.F_main.resources
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.F_missing.resources
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.Properties.Resources.resources
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.GenerateResource.cache
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.CoreCompileInputs.cache
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.exe
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.pdb
+D:\experiments\MMICIII\MMICIII\bin\Debug\data\TestFiles.txt
+D:\experiments\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-2.csv
+D:\experiments\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-3.csv
+D:\experiments\MMICIII\MMICIII\bin\Debug\data\exp_sofa_input_item.csv
+D:\experiments\MMICIII\MMICIII\bin\Debug\data\exp_subject.csv
+D:\experiments\MMICIII\MMICIII\bin\Debug\data\sofadic.csv
+D:\experiments\MMICIII\MMICIII\bin\Debug\data\APACHE II Train-1.csv
+D:\experiments\MMICIII\MMICIII\bin\Debug\MMICIII.exe.config
+D:\experiments\MMICIII\MMICIII\bin\Debug\MMICIII.exe
+D:\experiments\MMICIII\MMICIII\bin\Debug\MMICIII.pdb
+D:\experiments\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar.Charts.dll
+D:\experiments\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar2.dll
+D:\experiments\MMICIII\MMICIII\bin\Debug\Npgsql.dll
+D:\experiments\MMICIII\MMICIII\bin\Debug\Mono.Security.dll
+D:\experiments\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar2.xml
+D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.CopyComplete

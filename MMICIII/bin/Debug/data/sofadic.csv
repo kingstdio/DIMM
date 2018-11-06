@@ -1,0 +1,330 @@
+key,value
+-,0
+.,0
+.,0
+`,0
+`,0
+<0.07,0.02
+<0.25,0.2
+<1.0*,0.6
+<4,3
+<5,4
+<5*,4
+<5*#,4
+>100,200
+>150,300
+>150*,300
+>150*,190
+>150.0,170
+1 gm,1
+1 gm ca,1
+1.1o,1.1
+13.0.,13
+1400u,1400
+140cs,140
+149cs,149
+150 is,150
+166cs,166
+1g,1
+1g ca,1
+1g mg,1
+1gca,1
+1gcacl,1
+1gcagl,1
+1gm,1
+1gm ca,1
+1gmca,1
+1gmcag,1
+1gram,1
+1grm,1
+1st av (first degree av block),16
+2 amp,2
+2 amp^,2
+2 amps,2
+2 ca,2
+2 ca++,2
+2 caglu,2
+2 cal,2
+2 g ca,2
+2 gm,2
+2 gm ca,2
+2 gms,2
+2 gr,2
+2 grams,2
+20 calg,20
+232cs,232
+250cs,250
+26..1,26.1
+2amp ca,2
+2amps,2
+2cachl,2
+2cagl,2
+2caglu,2
+2g,2
+2g ca,2
+2g ca+,2
+2g cagl,2
+2g iv,2
+2g mag,2
+2g mg,2
+2gca,2
+2gca+,2
+2gca++,2
+2gcagl,2
+2gcaglu,2
+2gm,2
+2gm ca,2
+2gm cag,2
+2gm cal,2
+2gm mag,2
+2gm mg,2
+2gmag,2
+2gmca,2
+2gmca+,2
+2gmca+g,2
+2gmcag,2
+2gmcagl,2
+2gmcal,2
+2gmg,2
+2gmg+,2
+2gmgso4,2
+2gmmag,2
+2gmMg,2
+2gmmso4,2
+2gms,2
+2gm's,2
+2gms ca,2
+2gmsca,2
+2gr,2
+2gram,2
+2grams,2
+2grca,2
+2grm,2
+2grms,2
+2mag,2
+2mgcal,2
+2mgso4,0
+2nd av m2 (second degree av block - mobitz 2),18
+2nd av w-m1 (second degree av block wenckebach - mobitz1),10
+3 g ca,3
+3 gm ca,3
+30.8wms,30.8
+38..0,38
+3caglu,3
+3g,3
+3g ca,3
+3gm,3
+3gm ca,3
+3gmca,3
+3gmcal,3
+3gms,3
+3grams,3
+3mgso4,3
+3rd av (complete heart block),12
+3way indwelling catheter,4
+4 amps,4
+4 gm,4
+4 gm ca,4
+4 gms,4
+4caglu,4
+4g ca,4
+4g ca+,4
+4gca,4
+4gca+,4
+4gm,4
+4gm ca,4
+4gm cal,4
+4gm mag,4
+4gm Mg,4
+4gmca,4
+4gmcagl,4
+4gmcal,4
+4gmcalg,4
+4gMG,4
+4gmmag,4
+4gms,4
+4grams,4
+4mg cal,4
+a flut (atrial flutter),5
+a paced,23
+absent,6
+af (atrial fibrillation),13
+amber,4
+ambulate,5
+amp ca,5
+apneic,10
+ascites,1
+asystole,14
+av paced,17
+bed as chair,2
+bedrest,6
+brown,5
+ca 1gm,1
+ca 2 gm,2
+ca 2gm,2
+ca 4gm,4
+ca 4gm,4
+ca glu,3
+ca gluc,3
+ca iv,7
+ca+ 1gm,1
+ca+ 2gm,2
+ca2gm,2
+ca2gms,2
+cag 2gm,2
+cag 4gm,4
+cag2gm,2
+caglu,9
+caglu2g,2
+cagluc,9
+calcium,13
+chair,1
+cheyne-stokes,8
+circulation adequate,1
+cold,4
+commode,4
+condom catheter,10
+cool,3
+cs-85,85
+dangle,3
+difficult to palpate,4
+discoordinate,2
+done,1
+doppler,7
+easily palpable,5
+error,0
+errror,0
+firm,6
+firm distended,7
+gesturing,3
+gravid uterus,4
+green,6
+hot,2
+icteric,5
+idioventricular,6
+ileoconduit,2
+impaired,1
+indwelling urinary catheter,7
+intact,2
+irregular,3
+jr (junctional rhythm),21
+jt (junctional tachycardia),9
+kussmaul,4
+lbbb (left bundle branch block),25
+left side,6
+light yellow,2
+luc 2gm,2
+mag,0
+mag 2g,2
+mag 2gm,2
+mag 4gm,4
+mag2gm,2
+mat (multifocal atrial tachycardia),20
+mg 2gm,2
+mgo 400,400
+mouthing words,2
+nephrostomy,1
+nho,9
+no data,0
+nodding,3
+non-distended,2
+none,0
+normal saline,3
+not applicable,3
+not assessed,0
+not done,0
+obese,8
+open,10
+orange,3
+other/remarks,2
+pat (paroxysmal atrial tachycardia),11
+patient,6
+pink,9
+pjt (paroxysmal junctional tachycardia),26
+pnd,7
+prismasate k0,1
+prismasate k2,3
+prismasate k4,5
+prone,4
+qns,15
+rbbb (right bundle branch block),1
+rebound tenderness,11
+red,7
+redness,2
+regard,8
+regular,1
+retr penis pouch,6
+reverse t-berg,8
+right side,5
+rotating,7
+sa (sinus arrhythmia),22
+sb (sinus bradycardia),15
+skin breakdown,2
+soft,3
+soft distended,5
+sr (sinus rhythm),24
+st (sinus tachycardia),8
+straight catheter,5
+strong,5
+strong/palpable,1
+supine,3
+suprapubic,3
+svt (supra ventricular tachycardia),2
+swelling,3
+swimmers position - l,2
+swimmers position - r,1
+symbol/abc board,2
+tachypneic,2
+tender,9
+translator,2
+tx,2
+ureteral stent,8
+v paced,19
+verbal,1
+vf (ventricular fibrillation),3
+voids,8
+vt (ventricular tachycardia),4
+wap (wandering atrial pacemaker),7
+warm,2
+weak,2
+weak palpable,2
+write,3
+yellow,8
+<0.3,0.1
+<1.0,0.6
+2 g,2
+2mg,2
+4gr iv,4
+<0.1,0.05
+400PO,400
+MagOx,1.6
+400PO,400
+4mgso4,4
+2gmsmag,2
+12R,12
+2u,2
+Mg1Gm,1
+20meq,114
+2 MGSO4,2
+4gmMG,4
+2gMgS4,2
+2gms mg,2
+3 mgso4,3
+?12.9,12.9
+2GR IV,2
+2mgiv,2
+400mg,400
+>30.0,35
+>30,35
+2 GmMag,2
+Mag2G,2
+173cs,173
+<0.5,0.4
+<0.4,0.35
+20k,20000
+vit  K,26.7
+2g MG+,2
+1uFFP,14
+MagSo4,1
+>140,150
+given,1

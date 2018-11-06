@@ -1,0 +1,9 @@
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\bin\Debug\MiniTools.exe.config
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\bin\Debug\MiniTools.exe
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\bin\Debug\MiniTools.pdb
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\obj\Debug\MiniTools.csprojResolveAssemblyReference.cache
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\obj\Debug\MiniTools.Properties.Resources.resources
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\obj\Debug\MiniTools.csproj.GenerateResource.cache
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\obj\Debug\MiniTools.csproj.CoreCompileInputs.cache
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\obj\Debug\MiniTools.exe
+D:\C#WORKSPACE\WINFORM\MMICIII\MiniTools\obj\Debug\MiniTools.pdb

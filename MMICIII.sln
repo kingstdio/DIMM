@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMICIII", "MMICIII\MMICIII.csproj", "{2ACA1B8A-9289-42B1-91ED-A1F214941451}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniTools", "MiniTools\MiniTools.csproj", "{B49EE321-4BD4-4D1C-BF27-5CD72D056DE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ACA1B8A-9289-42B1-91ED-A1F214941451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ACA1B8A-9289-42B1-91ED-A1F214941451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ACA1B8A-9289-42B1-91ED-A1F214941451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ACA1B8A-9289-42B1-91ED-A1F214941451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49EE321-4BD4-4D1C-BF27-5CD72D056DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49EE321-4BD4-4D1C-BF27-5CD72D056DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49EE321-4BD4-4D1C-BF27-5CD72D056DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49EE321-4BD4-4D1C-BF27-5CD72D056DE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {156D790D-393C-493C-AEE9-0DF00EE4DDEF}
+	EndGlobalSection
+EndGlobal
