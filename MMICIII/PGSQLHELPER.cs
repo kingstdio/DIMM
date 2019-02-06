@@ -10,7 +10,7 @@ namespace MMICIII
 {
     public static class PGSQLHELPER
     {
-        public static string connectionString = "Server=10.33.2.149;Port=5432;User Id=uqzshi3;Password=1q2w3e4r5t;Database=mimiciii;CommandTimeout=240;";
+        public static string connectionString = "Server=10.33.2.149;Port=5432;User Id=;Password=;Database=mimiciii;CommandTimeout=240;";
 
         public static string conn2 = string.Empty;
 
