@@ -1,28 +1,26 @@
 import tensorflow as tf
 import tensorflow.contrib as tc
 import time
-from .nn_module import dense, seq_loss, focal_loss, point_loss
+from .rnn_module import cu_rnn, nor_rnn
+from .nn_module import dense, seq_loss, focal_loss, point_loss, multihead_attention, feedforward, label_smoothing
 from .attention_module import self_transformer
 
 
-class SAND(object):
-    def __init__(self, args, batch, dim, logger, W, M):
+class bi_RNN_Model(object):
+    def __init__(self, args, batch, dim, logger, trainable=True):
         # logging
         self.logger = logger
+        self.trainable = trainable
         # basic config
-        self.cache_W = W
-        self.M = M
         self.n_index = dim[0]
         self.n_medicine = dim[1]
-        self.n_hidden = 2 * args.n_hidden
+        self.n_hidden = args.n_hidden
         self.use_cudnn = args.use_cudnn
         self.n_batch = tf.get_variable('n_batch', shape=[], dtype=tf.int32, trainable=False)
         self.n_layer = args.n_layer
-        self.block_ipt = args.block_ipt
-        self.head_ipt = args.head_ipt
         self.n_label = args.n_class
         self.is_map = args.is_map
-        self.is_att = args.ipt_att
+        self.is_bi = args.is_bi
         self.is_point = args.is_point
         self.is_fc = args.is_fc
         self.opt_type = args.optim
@@ -33,13 +31,9 @@ class SAND(object):
         self.N = tf.shape(self.id)[0]
         self.max_len = tf.reduce_max(self.seq_len)
         self.mask = tf.sequence_mask(self.seq_len, self.max_len, dtype=tf.float32, name='masks')
+        self.padding = tf.sequence_mask(self.seq_len, self.max_len, dtype=tf.int32, name='padding')
         self.index = tf.slice(self.index, [0, 0, 0], tf.stack([self.N, self.max_len, self.n_index]))
         self.medicine = tf.slice(self.medicine, [0, 0, 0], tf.stack([self.N, self.max_len, self.n_medicine]))
-        # self.position = tf.multiply(tf.tile(tf.expand_dims(tf.range(start=1, limit=self.max_len + 1), 0), [self.N, 1]),
-        #                             tf.cast(self.mask, dtype=tf.int32))
-        self.position = tf.tile(tf.expand_dims(tf.range(start=0, limit=self.max_len), 0), [self.N, 1])
-        self.pos_embeddings = tf.Variable(tf.random_normal([720, self.n_hidden], 0.0, self.n_hidden ** -0.5),
-                                          trainable=True)
         self.lr = tf.get_variable('lr', shape=[], dtype=tf.float32, trainable=False)
         self.is_train = tf.get_variable('is_train', shape=[], dtype=tf.bool, trainable=False)
         self.global_step = tf.get_variable('global_step', shape=[], dtype=tf.int32,
@@ -60,51 +54,46 @@ class SAND(object):
 
     def _build_graph(self):
         start_t = time.time()
-        self._embedding()
-        self._self_attention()
-        self._interpolation()
+        self._encode()
+        self._rnn()
         if self.is_point:
             self._point_label()
         else:
             self._seq_label()
         self._compute_loss()
-        self._create_train_op()
+        if self.trainable:
+            self._create_train_op()
         self.logger.info('Time to build graph: {} s'.format(time.time() - start_t))
 
-    def _embedding(self):
-        self.input_encodes = tf.concat([self.index, self.medicine], 2)
-        with tf.variable_scope('input_embedding', reuse=tf.AUTO_REUSE):
-            self.input_emb = tf.layers.conv1d(inputs=self.input_encodes, filters=self.n_hidden, kernel_size=1,
-                                              padding='same', kernel_initializer=self.initializer)
-        with tf.variable_scope('position_embedding', reuse=tf.AUTO_REUSE):
-            self.pos_emb = tf.nn.embedding_lookup(self.pos_embeddings, self.position)
-        self.input_encodes = self.input_emb + tf.multiply(self.pos_emb,
-                                                          tf.tile(tf.expand_dims(self.mask, axis=2), [1, 1, self.n_hidden]))
+    def _encode(self):
+        with tf.variable_scope('input_encoding', reuse=tf.AUTO_REUSE):
+            if self.is_map:
+                with tf.variable_scope('index', reuse=tf.AUTO_REUSE):
+                    self.index = dense(self.index, hidden=self.n_hidden, initializer=self.initializer)
+                    self.index = tf.reshape(self.index, [-1, self.max_len, self.n_hidden], name='2_3D')
+                with tf.variable_scope('medicine', reuse=tf.AUTO_REUSE):
+                    self.medicine = dense(self.medicine, hidden=self.n_hidden, initializer=self.initializer)
+                    self.medicine = tf.reshape(self.medicine, [-1, self.max_len, self.n_hidden], name='2_3D')
+            self.input_encodes = tf.concat([self.index, self.medicine], 2)
+            if self.is_train:
+                self.input_encodes = tf.nn.dropout(self.input_encodes, self.dropout_keep_prob)
 
+    def _rnn(self):
+        with tf.variable_scope('rnn', reuse=tf.AUTO_REUSE):
+            if self.use_cudnn:
+                self.seq_encodes, _ = cu_rnn('bi-lstm', self.input_encodes, self.n_hidden, self.n_batch,
+                                             self.is_train, self.n_layer)
+            else:
+                self.seq_encodes = nor_rnn('bi-sru', self.input_encodes, self.seq_len, self.n_hidden,
+                                           self.n_layer, self.dropout_keep_prob)
+        if self.is_bi:
+            self.n_hidden *= self.n_layer
         if self.is_train:
-            self.input_encodes = tf.nn.dropout(self.input_encodes, self.dropout_keep_prob)
-
-    def _self_attention(self):
-        with tf.variable_scope('self_attention', reuse=tf.AUTO_REUSE):
-            self.seq_encodes = self_transformer(self.input_encodes, self.input_encodes, self.mask, self.block_ipt,
-                                                self.n_hidden, self.head_ipt, self.dropout_keep_prob, True, self.is_train)
-
-    def _interpolation(self):
-        with tf.variable_scope('interpolation_embedding', reuse=tf.AUTO_REUSE):
-            self.S = tf.transpose(self.seq_encodes, [0, 2, 1])
-            self.indices = tf.tile(tf.expand_dims(tf.range(start=0, limit=self.max_len), 0), [self.N, 1])
-            self.W = tf.nn.embedding_lookup(self.cache_W, self.indices)
-            self.W = tf.multiply(self.W, tf.tile(tf.expand_dims(self.mask, axis=2), [1, 1, self.M]))
-            self.U = tf.matmul(self.S, self.W)
-            self.inter_emb = tf.reshape(self.U, [self.N, self.n_hidden * self.M])
+            self.seq_encodes = tf.nn.dropout(self.seq_encodes, self.dropout_keep_prob)
 
     def _seq_label(self):
         with tf.variable_scope('seq_labels', reuse=tf.AUTO_REUSE):
-            self.seq_encodes = tf.reshape(self.input_encodes, [-1, self.n_hidden])
-            # self.label_dense_1 = tf.nn.relu(dense(self.seq_encodes, hidden=int(self.n_hidden / 2), scope='dense_1',
-            #                                       initializer=self.initializer))
-            # if self.is_train:
-            #     self.label_dense_1 = tf.nn.dropout(self.label_dense_1, self.dropout_keep_prob)
+            self.seq_encodes = tf.reshape(self.seq_encodes, [-1, self.n_hidden])
             self.outputs = dense(self.seq_encodes, hidden=self.n_label, scope='output_labels',
                                  initializer=self.initializer)
             self.outputs = tf.reshape(self.outputs, tf.stack([-1, self.max_len, self.n_label]))
@@ -117,15 +106,26 @@ class SAND(object):
 
     def _point_label(self):
         with tf.variable_scope('point_labels', reuse=tf.AUTO_REUSE):
-            self.outputs = dense(self.inter_emb, hidden=self.n_label, scope='output_labels',
+            # self.seq_encodes = tf.squeeze(tf.gather_nd(self.seq_encodes, tf.stack(
+            #     [tf.range(self.seq_len.shape[0])[..., tf.newaxis], self.seq_len[..., tf.newaxis]], axis=2)))
+            self.last_encodes = self.seq_encodes[:, -1, :]
+            self.label_dense_1 = tf.nn.relu(dense(self.last_encodes, hidden=int(self.n_hidden / 2), scope='dense_1',
+                                                  initializer=self.initializer))
+            if self.is_train:
+                self.label_dense_1 = tf.nn.dropout(self.label_dense_1, self.dropout_keep_prob)
+            self.outputs = dense(self.label_dense_1, hidden=self.n_label, scope='output_labels',
                                  initializer=self.initializer)
+
             self.label_loss = point_loss(self.outputs, self.labels)
 
     def _compute_loss(self):
         self.all_params = tf.trainable_variables()
-        self.pre_labels = tf.argmax(self.outputs, axis=1 if self.is_point else 2)
         self.soft_outputs = tf.stop_gradient(tf.nn.softmax(self.outputs))
-        self.pre_scores = self.soft_outputs[:, 1]
+        self.pre_labels = tf.argmax(self.outputs, axis=1 if self.is_point else 2)
+        if self.is_point:
+            self.pre_scores = self.soft_outputs[:, 1]
+        else:
+            self.pre_scores = self.soft_outputs[:, :, 1]
         self.loss = self.label_loss
         if self.weight_decay > 0:
             with tf.variable_scope('l2_loss'):
@@ -138,14 +138,12 @@ class SAND(object):
             self.accuracy = tf.reduce_mean(tf.cast(correct_predictions, 'float'), name='accuracy')
 
     def _create_train_op(self):
-        """
-        Selects the training algorithm and creates a train operation with it
-        """
         with tf.variable_scope('optimizer', reuse=tf.AUTO_REUSE):
             if self.opt_type == 'adagrad':
                 self.optimizer = tf.train.AdagradOptimizer(self.lr)
             elif self.opt_type == 'adam':
                 self.optimizer = tc.opt.LazyAdamOptimizer(self.lr)
+                # self.optimizer = tc.opt.AdamWOptimizer(self.weight_decay, self.lr)
             elif self.opt_type == 'rprop':
                 self.optimizer = tf.train.RMSPropOptimizer(self.lr)
             elif self.opt_type == 'sgd':
@@ -153,10 +151,8 @@ class SAND(object):
             else:
                 raise NotImplementedError('Unsupported optimizer: {}'.format(self.opt_type))
             # self.grads, _ = tf.clip_by_global_norm(tf.gradients(self.loss, self.all_params), 25)
-            # self.train_op = self.optimizer.apply_gradients(zip(self.grads, self.all_params),
-            #                                                global_step=self.global_step)
-            # self.train_op = self.optimizer.minimize(self.loss, global_step=self.global_step)
             grads = self.optimizer.compute_gradients(self.loss)
             gradients, variables = zip(*grads)
             capped_grads, _ = tf.clip_by_global_norm(gradients, 25)
-            self.train_op = self.optimizer.apply_gradients(zip(capped_grads, variables), global_step=self.global_step)
+            self.train_op = self.optimizer.apply_gradients(zip(capped_grads, variables),
+                                                           global_step=self.global_step)
