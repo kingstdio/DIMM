@@ -44,7 +44,7 @@ namespace MMICIII.Utils
             string sql = @"select charttime  from mimiciii.chartevents where icustay_id = "+icuStayID+" ORDER BY charttime desc limit 1";
             string outIcuTime = PGSQLHELPER.excuteSingleResult(sql).Trim();
 
-            if (outIcuTime == "")//如果没有chart事件，默认非ICU死亡
+            if (outIcuTime == "" || outIcuTime=="0")//如果没有chart事件，默认非ICU死亡
             {
                 return false;
             }

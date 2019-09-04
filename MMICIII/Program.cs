@@ -16,8 +16,11 @@ namespace MMICIII
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new F_missing());
-            
+            Application.Run(new F_main());
+            //Application.Run(new F_FeatureTools());
+            //Application.Run(new F_missing());
+            //Application.Run(new F_Tree());
+
         }
     }
 }

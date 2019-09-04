@@ -44,6 +44,7 @@ namespace MMICIII
             comb_scoreSystemType.SelectedIndex = 0;
             sCORESYSTEMTYPE = SCORESYSTEMTYPE.APACHEII;
             GlobalVars.sofaMapDic = Utils.FilterTools.loadSofaExtendedMapDic(@"./data/sofadic.csv");
+            tb_tmspan.Text = GlobalVars.TIMESPAN.ToString();
         }
         #endregion
 
@@ -119,16 +120,22 @@ namespace MMICIII
         /// <param name="e"></param>
         private void bt_writeCSV_Click(object sender, EventArgs e)
         {
+            string wirtebase = @"C:\Users\shizhenkun\Desktop";
             switch(sCORESYSTEMTYPE)
             {
                 case SCORESYSTEMTYPE.APACHEII:
                     {
-                        Utils.Output.CsvWrite(@"C:\Users\uqzshi3\Desktop\"+GlobalVars.currentPatient.icustay_id+"_APACHEII_SCORE.csv", squenceList_Bt_use, SCORESYSTEMTYPE.APACHEII);
+                        Utils.Output.CsvWrite(wirtebase + GlobalVars.currentPatient.icustay_id+"_APACHEII_SCORE.csv", squenceList_Bt_use, SCORESYSTEMTYPE.APACHEII);
                         break;
                     }
                 case SCORESYSTEMTYPE.SOFA:
                     {
-                        Utils.Output.CsvWrite(@"C:\Users\uqzshi3\Desktop\"+GlobalVars.currentPatient.icustay_id+"_SOFA_SCORE.csv", squenceList_Bt_use, SCORESYSTEMTYPE.SOFA);
+                        Utils.Output.CsvWrite(wirtebase +
+                            GlobalVars.currentPatient.icustay_id+"_"+
+                            GlobalVars.currentPatient.age+"_"+
+                            GlobalVars.currentPatient.gender+"_"+
+                            GlobalVars.currentPatient.isDead.ToString()
+                            +"_SOFA_SCORE.csv", squenceList_Bt_use, SCORESYSTEMTYPE.SOFA);
                         break;
                     }
             }
@@ -155,6 +162,9 @@ namespace MMICIII
         {
             rtb_outBox.AppendText("Begin to build Sample Data \r\n");
             String icustayid = tb_icustayid.Text.Trim();
+            GlobalVars.currentPatient.AssigmentByIcuStayId(icustayid);
+
+
             DataTable currentTrainDataTable = new DataTable();
             switch (sCORESYSTEMTYPE)
             {
@@ -325,10 +335,10 @@ namespace MMICIII
             //      "	icustay_id IN ( SELECT	icustay_id FROM	mimiciii.icustays WHERE	subject_id IN ( SELECT subject_id FROM mimiciii.v_exp_death_diagnoses_details " +
             //      " WHERE icd9_code = '" + tb_icd9.Text.Trim() + "' and seq_num<=2) 	) and los<=" + GlobalVars.ICUSTDAYMAXLENGTH + ";";
 
-            //住院时长压缩到10天的
-            //sql = "select row_id, icustay_id, los as staytime, dbsource from mimiciii.\"v_exp_patients_sofa_Extended\" WHERE" +
-            //      "	icustay_id IN ( SELECT	icustay_id FROM	mimiciii.icustays WHERE	subject_id IN ( SELECT subject_id FROM mimiciii.v_exp_death_diagnoses_details " +
-            //      " WHERE icd9_code = '" + tb_icd9.Text.Trim() + "' ) 	) and los<=" + GlobalVars.ICUSTDAYMAXLENGTH + ";";
+            //住院时长压缩到15天的
+            sql = "select row_id, icustay_id, los as staytime, dbsource from mimiciii.\"v_exp_patients_sofa_Extended\" WHERE" +
+                  "	icustay_id IN ( SELECT	icustay_id FROM	mimiciii.icustays WHERE	subject_id IN ( SELECT subject_id FROM mimiciii.v_exp_death_diagnoses_details " +
+                  " WHERE icd9_code = '" + tb_icd9.Text.Trim() + "' ) 	) and los<= 15;";
 
             //1p1u带level的
             //sql = "select row_id, icustay_id, los as staytime, dbsource from mimiciii.\"v_exp_patients_sofa_Extended\" WHERE	icustay_id IN ( SELECT	icustay_id FROM	mimiciii.icustays WHERE	subject_id IN ( SELECT subject_id FROM mimiciii.v_exp_death_diagnoses_details  WHERE icd9_code = '41401' and seq_num<=1 ) 	) and los<=10;";
@@ -343,15 +353,15 @@ namespace MMICIII
 
             //淋巴肿瘤
 
-           sql="select row_id, icustay_id, los as staytime, dbsource from mimiciii.\"v_exp_patients_sofa_Extended\" WHERE	icustay_id IN ( SELECT	icustay_id FROM	mimiciii.icustays WHERE	subject_id IN ( SELECT subject_id FROM mimiciii.v_exp_death_diagnoses_details  WHERE icd9_code LIKE'200%' \n" +
-                "	OR icd9_code LIKE'201%'\n" +
-                "	OR icd9_code LIKE'202%'\n" +
-                "	OR icd9_code LIKE'203%'\n" +
-                "	OR icd9_code LIKE'204%'\n" +
-                "	OR icd9_code LIKE'205%'\n" +
-                "	OR icd9_code LIKE'206%'\n" +
-                "	OR icd9_code LIKE'207%'\n" +
-                "	OR icd9_code LIKE'208%' ) 	) ;";
+            //sql="select row_id, icustay_id, los as staytime, dbsource from mimiciii.\"v_exp_patients_sofa_Extended\" WHERE	icustay_id IN ( SELECT	icustay_id FROM	mimiciii.icustays WHERE	subject_id IN ( SELECT subject_id FROM mimiciii.v_exp_death_diagnoses_details  WHERE icd9_code LIKE'200%' \n" +
+            //     "	OR icd9_code LIKE'201%'\n" +
+            //     "	OR icd9_code LIKE'202%'\n" +
+            //     "	OR icd9_code LIKE'203%'\n" +
+            //     "	OR icd9_code LIKE'204%'\n" +
+            //     "	OR icd9_code LIKE'205%'\n" +
+            //     "	OR icd9_code LIKE'206%'\n" +
+            //     "	OR icd9_code LIKE'207%'\n" +
+            //     "	OR icd9_code LIKE'208%' ) 	) ;";
 
             DataTable dataTableS = PGSQLHELPER.excuteDataTable(sql);
 
@@ -379,7 +389,7 @@ namespace MMICIII
             String sql = string.Empty;
 
             //inputEvent输出文件路径
-            string pathInput_out = @"E:\MIMICIII\SOFA_SCORE\" + tb_icd9.Text.Trim() + @"_720_1p1u_3aiFinal\";
+            string pathInput_out = @"D:\MIMICIII\SOFA_SCORE\" + tb_icd9.Text.Trim() + @"_720_1p1u_3aiFinal\";
 
             if (!Directory.Exists(pathInput_out))
             {
@@ -415,12 +425,12 @@ namespace MMICIII
                 #endregion
 
                 //##########################
-                //筛除多个ICUstay的，只算最后一次
+                //筛除多个ICUstay的，只算最后一次 1p1u
 
-                if (!Utils.CommonTools.isLastICU(dricu["icustay_id"].ToString()))
-                {
-                    continue;
-                }
+                //if (!Utils.CommonTools.isLastICU(dricu["icustay_id"].ToString()))
+                //{
+                //    continue;
+                //}
                 //##########################
 
 
@@ -1421,5 +1431,122 @@ namespace MMICIII
             opf.Dispose();
         }
         #endregion
+
+        private void bt_divide2_Click(object sender, EventArgs e)
+        {
+            string path = string.Empty;
+            fb_main.ShowDialog();
+            path = fb_main.SelectedPath;
+            tss_scoreSystem.Text = path;
+            DirectoryInfo folder = new DirectoryInfo(path);
+
+            string ptrain = path + @"\train\";
+            string pvalidation= path + @"\validation\";
+            string ptest = path + @"\test\";
+
+            Directory.CreateDirectory(ptrain);
+            Directory.CreateDirectory(pvalidation);
+            Directory.CreateDirectory(ptest);
+
+            List<string> li_alive = new List<string>();
+            List<string> li_death = new List<string>();
+
+            int train = Convert.ToInt16(tb_train2.Text);
+            int validation = Convert.ToInt16(tb_vali2.Text);
+            int test = Convert.ToInt16(tb_test2.Text);
+
+            foreach (FileInfo file in folder.GetFiles("*.csv"))
+            {
+                if(file.Name.Substring(0, 1) == "0")
+                {
+                    li_death.Add(file.Name);
+                }
+                else
+                {
+                    li_alive.Add(file.Name);
+                }
+            }
+
+            double dathRatio = (double)(li_death.Count) / (li_alive.Count + li_death.Count);
+
+            int dtrain = (Int16)Math.Floor(train * dathRatio);
+            int atrain = train - dtrain;
+
+            int dvalidation = (Int16)Math.Floor(validation * dathRatio);
+            int avalidation = validation - dvalidation;
+
+            int dtest = (Int16)Math.Floor(test * dathRatio);
+            int atest = test - dtest;
+
+            Random rd = new Random();
+
+            //训练集
+            for (int i =0; i< dtrain; i++)
+            {
+                int n = rd.Next(li_death.Count);
+                File.Move(path + @"\" + li_death[n], ptrain + @"\" + li_death[n]);
+                li_death.RemoveAt(n);
+            }
+            for(int j=0;j<atrain; j++)
+            {
+                int n = rd.Next(li_alive.Count);
+                File.Move(path + @"\" + li_alive[n], ptrain + @"\" + li_alive[n]);
+                li_alive.RemoveAt(n);
+            }
+
+            //验证集
+            
+            for(int i =0; i< dvalidation; i++)
+            {
+                int n = rd.Next(li_death.Count);
+                File.Move(path + @"\" + li_death[n], pvalidation + @"\" + li_death[n]);
+                li_death.RemoveAt(n);
+            }
+            for (int j = 0; j < avalidation; j++)
+            {
+                int n = rd.Next(li_alive.Count);
+                File.Move(path + @"\" + li_alive[n], pvalidation + @"\" + li_alive[n]);
+                li_alive.RemoveAt(n);
+            }
+
+
+            // 测试集
+            for (int i = 0; i < dtest; i++)
+            {
+                int n = rd.Next(li_death.Count);
+                File.Move(path + @"\" + li_death[n], ptest + @"\" + li_death[n]);
+                li_death.RemoveAt(n);
+            }
+            for (int j = 0; j < atest; j++)
+            {
+                int n = rd.Next(li_alive.Count);
+                if (li_alive.Count != 0)
+                {
+                    File.Move(path + @"\" + li_alive[n], ptest + @"\" + li_alive[n]);
+                    li_alive.RemoveAt(n);
+                }
+            }
+            if (li_death.Count > 0)
+            {
+                for (int i = 0; i < li_death.Count; i++)
+                {
+                    File.Move(path + @"\" + li_death[i], ptest + @"\" + li_death[i]);
+                }
+            }
+            MessageBox.Show("complete");
+        }
+
+        private void tb_tmspan_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_tmspan.Text.Trim() != string.Empty)
+            {
+                GlobalVars.TIMESPAN = Convert.ToInt16(tb_tmspan.Text.Trim());
+            }
+        }
+
+        private void tb_icustayid_TextChanged(object sender, EventArgs e)
+        {
+            GlobalVars.currentPatient.icustay_id = Convert.ToInt64(tb_icustayid.Text);
+        }
     }
 }

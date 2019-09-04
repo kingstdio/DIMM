@@ -72,3 +72,53 @@ D:\experiments\MMICIII\MMICIII\bin\Debug\Npgsql.dll
 D:\experiments\MMICIII\MMICIII\bin\Debug\Mono.Security.dll
 D:\experiments\MMICIII\MMICIII\bin\Debug\DevComponents.DotNetBar2.xml
 D:\experiments\MMICIII\MMICIII\obj\Debug\MMICIII.csproj.CopyComplete
+D:\experiments\DIMM\MMICIII\bin\Debug\data\TestFiles.txt
+D:\experiments\DIMM\MMICIII\bin\Debug\data\APACHE II Train-2.csv
+D:\experiments\DIMM\MMICIII\bin\Debug\data\APACHE II Train-3.csv
+D:\experiments\DIMM\MMICIII\bin\Debug\data\exp_sofa_input_item.csv
+D:\experiments\DIMM\MMICIII\bin\Debug\data\exp_subject.csv
+D:\experiments\DIMM\MMICIII\bin\Debug\data\sofadic.csv
+D:\experiments\DIMM\MMICIII\bin\Debug\data\APACHE II Train-1.csv
+D:\experiments\DIMM\MMICIII\bin\Debug\MMICIII.exe.config
+D:\experiments\DIMM\MMICIII\bin\Debug\MMICIII.exe
+D:\experiments\DIMM\MMICIII\bin\Debug\MMICIII.pdb
+D:\experiments\DIMM\MMICIII\bin\Debug\DevComponents.DotNetBar.Charts.dll
+D:\experiments\DIMM\MMICIII\bin\Debug\DevComponents.DotNetBar2.dll
+D:\experiments\DIMM\MMICIII\bin\Debug\Npgsql.dll
+D:\experiments\DIMM\MMICIII\bin\Debug\Mono.Security.dll
+D:\experiments\DIMM\MMICIII\bin\Debug\DevComponents.DotNetBar2.xml
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csprojAssemblyReference.cache
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_FeatureTools.resources
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_main.resources
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_missing.resources
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.Properties.Resources.resources
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csproj.GenerateResource.cache
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csproj.CoreCompileInputs.cache
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csproj.CopyComplete
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.exe
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.pdb
+D:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_Tree.resources
+E:\experiments\DIMM\MMICIII\bin\Debug\data\TestFiles.txt
+E:\experiments\DIMM\MMICIII\bin\Debug\data\APACHE II Train-2.csv
+E:\experiments\DIMM\MMICIII\bin\Debug\data\APACHE II Train-3.csv
+E:\experiments\DIMM\MMICIII\bin\Debug\data\exp_sofa_input_item.csv
+E:\experiments\DIMM\MMICIII\bin\Debug\data\exp_subject.csv
+E:\experiments\DIMM\MMICIII\bin\Debug\data\sofadic.csv
+E:\experiments\DIMM\MMICIII\bin\Debug\data\APACHE II Train-1.csv
+E:\experiments\DIMM\MMICIII\bin\Debug\MMICIII.exe.config
+E:\experiments\DIMM\MMICIII\bin\Debug\MMICIII.exe
+E:\experiments\DIMM\MMICIII\bin\Debug\MMICIII.pdb
+E:\experiments\DIMM\MMICIII\bin\Debug\Npgsql.dll
+E:\experiments\DIMM\MMICIII\bin\Debug\Mono.Security.dll
+E:\experiments\DIMM\MMICIII\bin\Debug\DevComponents.DotNetBar2.xml
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csprojAssemblyReference.cache
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_FeatureTools.resources
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_main.resources
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_missing.resources
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.F_Tree.resources
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.Properties.Resources.resources
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csproj.GenerateResource.cache
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csproj.CoreCompileInputs.cache
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.csproj.CopyComplete
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.exe
+E:\experiments\DIMM\MMICIII\obj\Debug\MMICIII.pdb

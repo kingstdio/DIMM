@@ -92,6 +92,12 @@
     <Compile Include="F_missing.Designer.cs">
       <DependentUpon>F_missing.cs</DependentUpon>
     </Compile>
+    <Compile Include="F_Tree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Tree.Designer.cs">
+      <DependentUpon>F_Tree.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalVars.cs" />
     <Compile Include="PatientNode.cs" />
     <Compile Include="PGSQLHELPER.cs" />
@@ -103,8 +109,10 @@
     <Compile Include="Utils\ChartTools.cs" />
     <Compile Include="Utils\CommonTools.cs" />
     <Compile Include="Utils\DataTableTools.cs" />
+    <Compile Include="Utils\FileTools.cs" />
     <Compile Include="Utils\FillScore.cs" />
     <Compile Include="Utils\FilterTools.cs" />
+    <Compile Include="Utils\MathTools.cs" />
     <Compile Include="Utils\MergeList.cs" />
     <Compile Include="Utils\MissingValueTools.cs" />
     <Compile Include="Utils\Output.cs" />
@@ -117,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_missing.resx">
       <DependentUpon>F_missing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Tree.resx">
+      <DependentUpon>F_Tree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

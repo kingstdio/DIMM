@@ -34,6 +34,12 @@ namespace MMICIII
         /// </summary>
         public double weight { get; set; }
 
+
+        /// <summary>
+        /// 身高
+        /// </summary>
+        public double height { get; set; }
+
         /// <summary>
         /// 是否死亡
         /// </summary>
@@ -42,23 +48,35 @@ namespace MMICIII
         /// 进ICU时间
         /// </summary>
         public DateTime icuInTime { get; set; }
+
+        /// <summary>
+        /// 出ICU时间
+        /// </summary>
+        public DateTime icuOutTime { get; set; }
+
         /// <summary>
         /// 数据源
         /// </summary>
         public string dbsource { get; set; }
+
+        /// <summary>
+        /// ICU停留时长
+        /// </summary>
+        public double los { get; set; }
 
 
         public PatientNode()
         {
         }
 
-        public PatientNode(Int64 subject_id, int age, string gender, double weight, Int64 icustay_id)
+        public PatientNode(Int64 subject_id, int age, string gender, double weight, double height, Int64 icustay_id)
         {
             this.subject_id = subject_id;
             this.age = age;
             this.gender = gender;
             this.weight = weight;
             this.icustay_id = icustay_id;
+            this.height = height;
         }
 
         public void Clear()
@@ -68,6 +86,7 @@ namespace MMICIII
             this.gender = string.Empty;
             this.weight = 0;
             this.icustay_id = 0;
+            this.height = 0;
         }
 
         #region 通过chartNode填充病人信息
@@ -111,6 +130,57 @@ namespace MMICIII
             this.isDead = Utils.CommonTools.isICUdath(icustayid);
             this.icuInTime = Convert.ToDateTime(dr["intime"]);
             this.dbsource = dr["dbsource"].ToString();
+
+            this.los = Convert.ToDouble(dr["los"]);
+
+            //体重
+            sql = @"select * from mimiciii.weightfirstday where icustay_id ='"+icustayid+"'";
+            dr = PGSQLHELPER.excuteDataRow(sql);
+            if (dr == null)
+            {
+                this.weight = 0;
+            }
+            else
+            {
+                foreach (var cell in dr.ItemArray)
+                {
+                    if (cell.ToString() != string.Empty)
+                    {
+                        this.weight = Convert.ToDouble(cell);
+                    }
+                    else
+                    {
+                        this.weight = 0;
+                    }
+                }
+            }
+
+            //身高
+            sql = @"select height from mimiciii.heightfirstday where icustay_id ='" + icustayid + "'";
+            string hh = PGSQLHELPER.excuteSingleResult(sql);
+
+            if (hh != string.Empty)
+            {
+                this.height = Convert.ToDouble(hh);
+            }
+            else
+            {
+                this.height = 0;
+            }
+
+            //进出ICU时间
+            sql = @"select charttime from mimiciii.chartevents where icustay_id ='"+icustayid+"' ORDER BY charttime limit 1;";
+            string resultDate = PGSQLHELPER.excuteSingleResult(sql);
+            if (resultDate != string.Empty && resultDate!="0")
+                this.icuInTime = Convert.ToDateTime( resultDate);
+
+            sql = @"select charttime from mimiciii.chartevents where icustay_id ='" + icustayid + "' ORDER BY charttime desc limit 1;";
+            resultDate = PGSQLHELPER.excuteSingleResult(sql);
+            if (resultDate != string.Empty && resultDate != "0")
+                this.icuOutTime = Convert.ToDateTime(resultDate);
+
+
+
             return true;
         }
 

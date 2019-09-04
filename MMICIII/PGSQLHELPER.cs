@@ -10,7 +10,14 @@ namespace MMICIII
 {
     public static class PGSQLHELPER
     {
-        public static string connectionString = "Server=10.33.2.149;Port=5432;User Id=;Password=;Database=mimiciii;CommandTimeout=240;";
+        //public static string connectionString = "Server=10.33.2.149;Port=5432;User Id=uqzshi3;Password=1q2w3e4r5t;Database=mimiciii;CommandTimeout=2400;";
+        //public static string connectionString = "Server=10.184.49.199;Port=5432;User Id=uqzshi3;Password=uqkingstdio2019;Database=mimic;CommandTimeout=2400;";
+
+
+        //public static string connectionString = "Server=10.184.49.199;Port=5432;User Id=uqzshi3;Password=uqkingstdio2019;Database=eicu;CommandTimeout=2400;";
+        //public static string connectionString = "Server=59.72.0.98;Port=5432;User Id=uqzshi3;Password=uqkingstdio2019;Database=mimic;CommandTimeout=2400;";
+        public static string connectionString = "Server=192.168.1.49;Port=5432;User Id=uqzshi3;Password=uqkingstdio2019;Database=mimic;CommandTimeout=2400;";
+        //public static string connectionString = "Server=10.184.50.138;Port=5432;User Id=uqzshi3;Password=uqkingstdio2019;Database=mimic;CommandTimeout=2400;";
 
         public static string conn2 = string.Empty;
 
@@ -101,7 +108,14 @@ namespace MMICIII
                 {
                     DataSet ds = new DataSet();
                     objAdapter.Fill(ds);
-                    return ds.Tables[0].Rows[0];
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        return ds.Tables[0].Rows[0];
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
         }

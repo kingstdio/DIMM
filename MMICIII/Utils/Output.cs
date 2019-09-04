@@ -42,7 +42,6 @@ namespace MMICIII.Utils
         };
         #endregion
 
-
         #region ApacheII的输出字段
         /// <summary>
         /// ApacheII的输出字段
@@ -136,8 +135,6 @@ namespace MMICIII.Utils
         }
         #endregion
 
-
-
         #region 构建每一行输出项
         /// <summary>
         /// 构建每一行输出项
@@ -206,6 +203,28 @@ namespace MMICIII.Utils
         }
         #endregion
 
+        #region 输出缺失值的缺失信息
+        /// <summary>
+        /// 输出缺失值的缺失信息
+        /// </summary>
+        /// <param name="list">位置列表</param>
+        /// <param name="filePath">文件路径</param>
+        public static void outputPosList(List<double []> list, string filePath )
+        {
+            FileStream fileStream = new FileStream(filePath, FileMode.OpenOrCreate);
+            StreamWriter writer = new StreamWriter(fileStream);
+            string title = "rowpos,colpos,value";
+            writer.WriteLine(title);
+            foreach(double []  item in list)
+            {
+                string line = item[0] + "," + item[1] + "," + item[2];
+                writer.WriteLine(line);
+            }
 
+            writer.Close();
+            fileStream.Close();
+
+        }
+        #endregion
     }
 }

@@ -32,9 +32,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bt_mae = new System.Windows.Forms.Button();
             this.bt_calmean = new System.Windows.Forms.Button();
             this.bt_pd1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.sw_interval = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.label19 = new System.Windows.Forms.Label();
+            this.sw_marsk = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.cmb_filleype = new System.Windows.Forms.ComboBox();
             this.sw_fill = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.label12 = new System.Windows.Forms.Label();
@@ -46,6 +50,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_timespan = new System.Windows.Forms.TextBox();
@@ -71,15 +76,15 @@
             this.tss2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tss_icd9 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label18 = new System.Windows.Forms.Label();
-            this.sw_marsk = new DevComponents.DotNetBar.Controls.SwitchButton();
-            this.sw_interval = new DevComponents.DotNetBar.Controls.SwitchButton();
-            this.label19 = new System.Windows.Forms.Label();
+            this.check_badFile = new System.Windows.Forms.Button();
+            this.tb_ckNoneFiled = new System.Windows.Forms.Button();
+            this.bt_missingrate = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -110,6 +115,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.bt_missingrate);
+            this.groupBox2.Controls.Add(this.bt_mae);
             this.groupBox2.Controls.Add(this.bt_calmean);
             this.groupBox2.Controls.Add(this.bt_pd1);
             this.groupBox2.Location = new System.Drawing.Point(18, 284);
@@ -118,6 +125,16 @@
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Actions";
+            // 
+            // bt_mae
+            // 
+            this.bt_mae.Location = new System.Drawing.Point(357, 35);
+            this.bt_mae.Name = "bt_mae";
+            this.bt_mae.Size = new System.Drawing.Size(125, 44);
+            this.bt_mae.TabIndex = 14;
+            this.bt_mae.Text = "MAE-MRE";
+            this.bt_mae.UseVisualStyleBackColor = true;
+            this.bt_mae.Click += new System.EventHandler(this.bt_mae_Click);
             // 
             // bt_calmean
             // 
@@ -181,6 +198,51 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Args";
+            // 
+            // sw_interval
+            // 
+            // 
+            // 
+            // 
+            this.sw_interval.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.sw_interval.Location = new System.Drawing.Point(585, 173);
+            this.sw_interval.Name = "sw_interval";
+            this.sw_interval.OffText = "False";
+            this.sw_interval.OnText = "True";
+            this.sw_interval.Size = new System.Drawing.Size(98, 24);
+            this.sw_interval.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.sw_interval.SwitchWidth = 48;
+            this.sw_interval.TabIndex = 16;
+            this.sw_interval.Value = true;
+            this.sw_interval.ValueObject = "Y";
+            this.sw_interval.ValueChanged += new System.EventHandler(this.swInterval_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(482, 181);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(84, 13);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "outputInterval：";
+            // 
+            // sw_marsk
+            // 
+            // 
+            // 
+            // 
+            this.sw_marsk.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.sw_marsk.Location = new System.Drawing.Point(293, 176);
+            this.sw_marsk.Name = "sw_marsk";
+            this.sw_marsk.OffText = "False";
+            this.sw_marsk.OnText = "True";
+            this.sw_marsk.Size = new System.Drawing.Size(98, 24);
+            this.sw_marsk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.sw_marsk.SwitchWidth = 48;
+            this.sw_marsk.TabIndex = 14;
+            this.sw_marsk.Value = true;
+            this.sw_marsk.ValueObject = "Y";
+            this.sw_marsk.ValueChanged += new System.EventHandler(this.sw_marsk_ValueChanged);
             // 
             // cmb_filleype
             // 
@@ -296,6 +358,15 @@
             this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 7;
             this.label10.Text = "(hours)";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(212, 184);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 13);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "outputMask：";
             // 
             // label11
             // 
@@ -477,7 +548,7 @@
             // 
             this.tss1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tss1.BorderStyle = System.Windows.Forms.Border3DStyle.Raised;
+            this.tss1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.tss1.Name = "tss1";
             this.tss1.Size = new System.Drawing.Size(81, 19);
             this.tss1.Text = "baseLocation";
@@ -497,7 +568,7 @@
             this.tss2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tss2.BorderStyle = System.Windows.Forms.Border3DStyle.Raised;
+            this.tss2.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.tss2.Name = "tss2";
             this.tss2.Size = new System.Drawing.Size(79, 19);
             this.tss2.Text = "Current ICD9";
@@ -514,67 +585,45 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.check_badFile);
+            this.tabPage2.Controls.Add(this.tb_ckNoneFiled);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1081, 546);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Utils";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label18
+            // check_badFile
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(212, 184);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(75, 13);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "outputMask：";
+            this.check_badFile.Location = new System.Drawing.Point(313, 58);
+            this.check_badFile.Name = "check_badFile";
+            this.check_badFile.Size = new System.Drawing.Size(156, 35);
+            this.check_badFile.TabIndex = 1;
+            this.check_badFile.Text = "检查损坏的文件";
+            this.check_badFile.UseVisualStyleBackColor = true;
+            this.check_badFile.Click += new System.EventHandler(this.check_badFile_Click);
             // 
-            // sw_marsk
+            // tb_ckNoneFiled
             // 
+            this.tb_ckNoneFiled.Location = new System.Drawing.Point(97, 58);
+            this.tb_ckNoneFiled.Name = "tb_ckNoneFiled";
+            this.tb_ckNoneFiled.Size = new System.Drawing.Size(156, 35);
+            this.tb_ckNoneFiled.TabIndex = 0;
+            this.tb_ckNoneFiled.Text = "检查全为空的特征";
+            this.tb_ckNoneFiled.UseVisualStyleBackColor = true;
+            this.tb_ckNoneFiled.Click += new System.EventHandler(this.tb_ckNoneFiled_Click);
             // 
+            // bt_missingrate
             // 
-            // 
-            this.sw_marsk.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sw_marsk.Location = new System.Drawing.Point(293, 176);
-            this.sw_marsk.Name = "sw_marsk";
-            this.sw_marsk.OffText = "False";
-            this.sw_marsk.OnText = "True";
-            this.sw_marsk.Size = new System.Drawing.Size(98, 24);
-            this.sw_marsk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sw_marsk.SwitchWidth = 48;
-            this.sw_marsk.TabIndex = 14;
-            this.sw_marsk.Value = true;
-            this.sw_marsk.ValueObject = "Y";
-            this.sw_marsk.ValueChanged += new System.EventHandler(this.sw_marsk_ValueChanged);
-            // 
-            // sw_interval
-            // 
-            // 
-            // 
-            // 
-            this.sw_interval.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sw_interval.Location = new System.Drawing.Point(585, 173);
-            this.sw_interval.Name = "sw_interval";
-            this.sw_interval.OffText = "False";
-            this.sw_interval.OnText = "True";
-            this.sw_interval.Size = new System.Drawing.Size(98, 24);
-            this.sw_interval.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sw_interval.SwitchWidth = 48;
-            this.sw_interval.TabIndex = 16;
-            this.sw_interval.Value = true;
-            this.sw_interval.ValueObject = "Y";
-            this.sw_interval.ValueChanged += new System.EventHandler(this.swInterval_ValueChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(482, 181);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(84, 13);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "outputInterval：";
+            this.bt_missingrate.Location = new System.Drawing.Point(512, 35);
+            this.bt_missingrate.Name = "bt_missingrate";
+            this.bt_missingrate.Size = new System.Drawing.Size(103, 44);
+            this.bt_missingrate.TabIndex = 15;
+            this.bt_missingrate.Text = "Missing rate";
+            this.bt_missingrate.UseVisualStyleBackColor = true;
+            this.bt_missingrate.Click += new System.EventHandler(this.bt_missingrate_Click);
             // 
             // F_missing
             // 
@@ -594,6 +643,7 @@
             this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -646,5 +696,9 @@
         private System.Windows.Forms.Label label19;
         private DevComponents.DotNetBar.Controls.SwitchButton sw_marsk;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button bt_mae;
+        private System.Windows.Forms.Button tb_ckNoneFiled;
+        private System.Windows.Forms.Button check_badFile;
+        private System.Windows.Forms.Button bt_missingrate;
     }
 }

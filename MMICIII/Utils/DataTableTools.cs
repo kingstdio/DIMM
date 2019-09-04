@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MMICIII.Utils
 {
@@ -193,10 +189,7 @@ namespace MMICIII.Utils
             fs.Close();
         }
         #endregion
-
-
-        
-
+       
         #region 将CSV文件的数据读取到DataTable中
         /// <summary>
         /// 将CSV文件的数据读取到DataTable中
@@ -283,8 +276,13 @@ namespace MMICIII.Utils
         }
         #endregion
 
-
-
+        #region 将一个datatable拆分成几个
+        /// <summary>
+        /// 将一个datatable拆分成几个
+        /// </summary>
+        /// <param name="sourceTable">输入DataTable</param>
+        /// <param name="count">拆分的个数</param>
+        /// <returns>拆分好的dataSet</returns>
         public static DataSet divideDataTable(DataTable sourceTable, int count)
         {
             int rowCount = sourceTable.Rows.Count;
@@ -319,6 +317,7 @@ namespace MMICIII.Utils
 
             return reaultSet;
         }
+        #endregion
 
         #region 从DataTable中移除指定列
         /// <summary>

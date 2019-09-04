@@ -170,8 +170,12 @@ namespace MMICIII
             string pathInput_out = GlobalVars.EXPFILEBASE + @"_" +
                 (GlobalVars.ICUSTDAYMAXLENGTH * 60 / GlobalVars.TIMESPAN) +
                 @"\" + GlobalVars.CURRENTICDCODE + @"\";
+
             MissingValueTools.outputMataData(pathInput_out);//输出mata信息
-            MissingValueTools.constructExpData(GlobalVars.CURRENTICDCODE);
+            MissingValueTools.constructExpData(GlobalVars.CURRENTICDCODE, pathInput_out);
+
+
+
         }
 
         #region 计算ChartEvent各项Feature的均值与方差
@@ -187,8 +191,130 @@ namespace MMICIII
 
         }
 
+
         #endregion
 
-   
+        private void bt_mae_Click(object sender, EventArgs e)
+        {
+
+            string pathInput_out = GlobalVars.EXPFILEBASE + @"_" + (GlobalVars.ICUSTDAYMAXLENGTH * 60 / GlobalVars.TIMESPAN) + @"\" + GlobalVars.CURRENTICDCODE + @"\";
+
+            string pathMdata = @"E:\MIMICIII\MISSING_IJCAI_480\" + GlobalVars.CURRENTICDCODE+@"\original\missingData\";
+            string labelData = @"E:\MIMICIII\MISSING_IJCAI_480\" + GlobalVars.CURRENTICDCODE + @"\label.csv";
+            string posData = @"E:\MIMICIII\MISSING_IJCAI_480\" + GlobalVars.CURRENTICDCODE + @"\original\mpos\";
+
+            MissingValueTools.caclMAEMRE(labelData, pathMdata, posData, pathInput_out);
+
+           
+
+        }
+
+        private void tb_ckNoneFiled_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowDialog();
+            string dirpath = fbd.SelectedPath;
+            DirectoryInfo root = new DirectoryInfo(dirpath);
+            int[] result = new int[600];
+            foreach(FileInfo f in root.GetFiles())
+            {
+                DataTable dataTable = DataTableTools.OpenCSV(f.FullName);
+                for(int j = 0; j < dataTable.Columns.Count; j++)
+                {
+                    for(int i=0; i < dataTable.Rows.Count; i++)
+                    {
+                        if (dataTable.Rows[i][j].ToString().Trim() != string.Empty)
+                        {
+                            result[j]++;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            foreach(int i in result)
+            {
+                Console.WriteLine(i);
+            }
+
+        }
+
+        private void check_badFile_Click(object sender, EventArgs e)
+        {
+
+            String listFilePath = @"E:\MIMICIII\MISSING_480\25000\label.csv";
+
+
+            DataTable llistTable = DataTableTools.OpenCSV(listFilePath);
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowDialog();
+            string dirpath = fbd.SelectedPath;
+            DirectoryInfo root = new DirectoryInfo(dirpath);
+
+            foreach (DataRow dr in llistTable.Rows)
+            {
+                string icustatyid = dr["icustay_id"].ToString();
+
+                bool flag = false;
+
+                foreach (FileInfo f in root.GetFiles())
+                {
+                    if (f.Name.Substring(0, f.Name.IndexOf('.')).Equals(icustatyid))
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+
+                if (!flag)
+                {
+                    Console.WriteLine(icustatyid);
+                }
+
+            }
+
+        }
+
+        private void bt_missingrate_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowDialog();
+            string dirpath = fbd.SelectedPath;
+            DirectoryInfo root = new DirectoryInfo(dirpath);
+
+            Int64 existValueCount = 0;
+            int colcount=0;
+            int rowcount = 0;
+            double fileValueCount=0;
+            foreach (FileInfo f in root.GetFiles())
+            {
+                DataTable dataTable = DataTableTools.OpenCSV(f.FullName);
+                colcount = dataTable.Columns.Count;
+                rowcount = dataTable.Rows.Count;
+                int fileInerCount = 0;
+
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataTable.Columns.Count; j++)
+                    {
+                        String aa = dataTable.Rows[i][j].ToString().Trim();
+                        if (aa != "")
+                        {
+                            existValueCount++;
+                            fileInerCount++;
+                           // Console.Write(aa + ",");
+                        }
+                    }
+                    //Console.WriteLine();
+                }
+                Console.WriteLine(f.FullName + ":" + (double)fileInerCount/(rowcount*colcount));
+                fileValueCount += colcount * rowcount;
+            }
+
+            Console.WriteLine((double)(existValueCount/fileValueCount));
+           
+        }
     }
 }

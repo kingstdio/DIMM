@@ -20,3 +20,28 @@ D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Release\data\exp_sofa_input_item.csv
 D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\bin\Release\data\sofadic.csv
 D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Release\MMICIII.csproj.CopyComplete
 D:\C#WORKSPACE\WINFORM\MMICIII\MMICIII\obj\Release\MMICIII.csprojResolveAssemblyReference.cache
+D:\experiments\DIMM\MMICIII\bin\Release\data\APACHE II Train-2.csv
+D:\experiments\DIMM\MMICIII\bin\Release\data\APACHE II Train-3.csv
+D:\experiments\DIMM\MMICIII\bin\Release\data\exp_subject.csv
+D:\experiments\DIMM\MMICIII\bin\Release\data\TestFiles.txt
+D:\experiments\DIMM\MMICIII\bin\Release\data\exp_sofa_input_item.csv
+D:\experiments\DIMM\MMICIII\bin\Release\data\sofadic.csv
+D:\experiments\DIMM\MMICIII\bin\Release\data\APACHE II Train-1.csv
+D:\experiments\DIMM\MMICIII\bin\Release\MMICIII.exe.config
+D:\experiments\DIMM\MMICIII\bin\Release\MMICIII.exe
+D:\experiments\DIMM\MMICIII\bin\Release\MMICIII.pdb
+D:\experiments\DIMM\MMICIII\bin\Release\DevComponents.DotNetBar.Charts.dll
+D:\experiments\DIMM\MMICIII\bin\Release\DevComponents.DotNetBar2.dll
+D:\experiments\DIMM\MMICIII\bin\Release\Npgsql.dll
+D:\experiments\DIMM\MMICIII\bin\Release\Mono.Security.dll
+D:\experiments\DIMM\MMICIII\bin\Release\DevComponents.DotNetBar2.xml
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.csprojAssemblyReference.cache
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.F_FeatureTools.resources
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.F_main.resources
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.F_missing.resources
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.Properties.Resources.resources
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.csproj.GenerateResource.cache
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.csproj.CoreCompileInputs.cache
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.csproj.CopyComplete
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.exe
+D:\experiments\DIMM\MMICIII\obj\Release\MMICIII.pdb

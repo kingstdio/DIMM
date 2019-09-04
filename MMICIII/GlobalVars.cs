@@ -1,6 +1,7 @@
 ﻿using MMICIII.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace MMICIII
         /// <summary>
         /// timeSpan minutes
         /// </summary>
-        public static int TIMESPAN = 20;
+        public static int TIMESPAN = 30;
 
         /// <summary>
         /// ICU呆的最短时间，单位小时
@@ -41,7 +42,7 @@ namespace MMICIII
         /// <summary>
         /// 计算Features跑的线程个数
         /// </summary>
-        public static int threadCount = 16;
+        public static int threadCount = 1;
 
 
         /// <summary>
@@ -52,18 +53,18 @@ namespace MMICIII
         /// <summary>
         /// 实验数据的基础目录
         /// </summary>
-        public static string EXPFILEBASE = @"D:\MIMICIII\MISSING";
+        public static string EXPFILEBASE = @"E:\MIMICIII\MISSING_IJCAI";
 
 
         /// <summary>
         /// chartEvent所用的指标排序取前多少个
         /// </summary>
-        public static int CHARTFEATURENUM = 100;
+        public static int CHARTFEATURENUM = 230;
 
         /// <summary>
         /// inputEvent所用的指标排序取前多少个
         /// </summary>
-        public static int INPUTFEATURENUM = 100;
+        public static int INPUTFEATURENUM = 200;
 
         /// <summary>
         /// 是否填充缺失值
@@ -73,7 +74,7 @@ namespace MMICIII
         /// <summary>
         /// 是否是1p1U
         /// </summary>
-        public static bool IS1P1U = false;
+        public static bool IS1P1U = true;
 
         /// <summary>
         /// 填充缺失值的方式
@@ -83,7 +84,7 @@ namespace MMICIII
         /// <summary>
         /// 疾病相关性级别
         /// </summary>
-        public static int DISEASERELATEDLEVEL = 1;
+        public static int DISEASERELATEDLEVEL = 15;
 
         /// <summary>
         /// 补全K邻近的K值
@@ -101,6 +102,40 @@ namespace MMICIII
         /// 是否输出时序掩码
         /// </summary>
         public static bool OUTPUTINTERVAL = true;
+
+        /// <summary>
+        /// 额外添加的独立特征
+        /// </summary>
+        public static int ADDITIONFILEDCOUNT = 6;
+
+
+        /// <summary>
+        /// 是否构建的是缺失数据
+        /// </summary>
+        public static bool ISMISSINGSET = true;
+
+        /// <summary>
+        /// 数据缺失率
+        /// </summary>
+        public static double MISSINGRATE = 0.1;
+
+        /// <summary>
+        /// chartEvent的feature列表
+        /// </summary>
+        public static DataTable CHARTFETURETABLE = new DataTable();
+
+
+       /// <summary>
+       /// inputevent的feature列表
+       /// </summary>
+        public static DataTable INPUTFETURETABLE = new DataTable();
+
+
+        /// <summary>
+        /// 是否包含inputevent的数据
+        /// </summary>
+        public static bool INPUTSWITCH = false;
+
 
     }
 }
